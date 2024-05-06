@@ -1,8 +1,11 @@
-use predict_pass_api::generator::password::generate_password;
+use predict_pass_api::generator::password::PasswordGenerator;
 
-fn main() {
+fn main() -> Result<(), anyhow::Error> {
     println!("Hello, world!");
-    let pass = generate_password(String::from("Batman123"), String::from("uuid-man"));
+    let pass =
+        PasswordGenerator::generate_hash(String::from("Batman123"), String::from("uuid-man"))?;
 
     println!("{}", pass);
+
+    Ok(())
 }
