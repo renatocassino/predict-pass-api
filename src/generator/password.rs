@@ -6,13 +6,28 @@ pub struct PasswordGenerator {
     special_chars: Vec<char>,
 }
 
-pub struct PasswordRules {
-    pub length: u32,
-    pub uppercase: bool,
-    pub lowercase: bool,
+pub struct PasswordRuleLength {
+    pub min: u8,
+    pub max: u8,
+}
+
+pub struct PasswordAllowed {
+    pub letters: bool,
     pub numbers: bool,
     pub special_chars: bool,
+    pub uppercase: bool,
+    pub lowercase: bool,
+}
 
+pub struct PasswordRules {
+    pub length: Option<PasswordRuleLength>,
+    pub letters: Option<PasswordRuleLength>,
+    pub numbers: Option<PasswordRuleLength>,
+    pub special_chars: Option<PasswordRuleLength>,
+    pub uppercase: Option<PasswordRuleLength>,
+    pub lowercase: Option<PasswordRuleLength>,
+    pub allowed: PasswordAllowed,
+    pub version: Option<u8>,
 }
 
 impl PasswordGenerator {
